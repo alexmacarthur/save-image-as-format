@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Save Image as Format",
+  "version": "1.0",
+  "description": "Download an image as any format.",
+  "permissions": ["contextMenus"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {},
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "commands": {
+    "fill-form": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+F",
+        "mac": "Command+Shift+F"
+      },
+      "description": "Fill the form"
+    }
+  }
+}
