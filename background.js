@@ -2,14 +2,23 @@ const FORMATS = [
   { id: "jpeg", name: "JPEG", mime: "image/jpeg" },
   { id: "png", name: "PNG", mime: "image/png" },
   { id: "webp", name: "WebP", mime: "image/webp" },
-  { id: "bmp", name: "BMP", mime: "image/bmp" },
 ];
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.type === "DOWNLOAD_IMAGE") {
+    chrome.downloads.download({
+      url: message.imageUrl,
+      filename: message.filename,
+      saveAs: true,
+    });
+  }
+});
 
 chrome.runtime.onInstalled.addListener(async () => {
   chrome.contextMenus.removeAll(() => {
     chrome.contextMenus.create({
       id: "convertImage",
-      title: "Convert Image To...",
+      title: "Convert and save image",
       contexts: ["image"],
     });
 
