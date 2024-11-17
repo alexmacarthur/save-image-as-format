@@ -3,7 +3,7 @@
   "name": "PicPerf's Image Saver",
   "version": "1.0",
   "description": "Convert and save images in different formats.",
-  "permissions": ["contextMenus", "downloads"],
+  "permissions": ["contextMenus", "downloads", "activeTab", "scripting"],
   "background": {
     "service_worker": "background.js"
   },
@@ -12,11 +12,5 @@
     "48": "images/icon-48.png",
     "128": "images/icon-128.png"
   },
-  "action": {},
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
-    }
-  ]
+  "action": {}
 }
